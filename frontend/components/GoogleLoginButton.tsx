@@ -15,16 +15,19 @@ export default function GoogleLoginButton({ onError }: GoogleLoginButtonProps) {
   const { setAuth } = useAuthStore()
   const [loading, setLoading] = useState(false)
   const [enabled, setEnabled] = useState(false)
-
+  const [clientId, setClientId] = useState<string>('')
+  
   // Check if Google Client ID is configured
   useEffect(() => {
-    const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ''
-    setEnabled(clientId !== '' && clientId !== 'placeholder-client-id-for-provider')
+    const envClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ''
+    const isValid = envClientId !== '' && envClientId !== 'placeholder-client-id-for-provider'
+    setEnabled(isValid)
+    setClientId(envClientId)
   }, [])
 
   const googleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
-      if (!enabled) {
+      if (!enabled || !clientId) {
         if (onError) onError('Google sign-in is not configured')
         return
       }
@@ -48,20 +51,47 @@ export default function GoogleLoginButton({ onError }: GoogleLoginButtonProps) {
         setLoading(false)
       }
     },
-    onError: () => {
-      if (onError) onError('Google sign-in failed')
+    onError: (error) => {
+      console.error('Google login error:', error)
+      setLoading(false)
+      if (onError) {
+        if (!enabled || !clientId) {
+          onError('Google sign-in is not configured. Please set NEXT_PUBLIC_GOOGLE_CLIENT_ID in your frontend/.env.local file and restart the server.')
+        } else {
+          onError('Google sign-in failed. Please try again.')
+        }
+      }
     },
   })
 
-  if (!enabled) {
-    return null
+  const handleClick = () => {
+    if (loading) return
+
+    if (!enabled || !clientId) {
+      if (onError) {
+        onError('Google sign-in is not configured. Please add NEXT_PUBLIC_GOOGLE_CLIENT_ID to your frontend/.env.local file and restart the development server.')
+      }
+      return
+    }
+    
+    try {
+      googleLogin()
+    } catch (error) {
+      console.error('Error initiating Google login:', error)
+      setLoading(false)
+      if (onError) {
+        onError('Failed to start Google sign-in. Please check your configuration and try again.')
+      }
+    }
   }
 
   return (
     <button
-      onClick={() => googleLogin()}
+      type="button"
+      onClick={handleClick}
       disabled={loading}
-      className="w-full bg-white border border-gray-300 hover:bg-gray-50 text-text font-semibold py-2 px-4 rounded-md transition-colors flex items-center justify-center space-x-2 disabled:opacity-50"
+      className="w-full bg-white border border-gray-300 hover:bg-gray-50 text-text font-semibold py-2 px-4 rounded-md transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+      title={!enabled ? 'Google sign-in is not configured. Click to see instructions.' : 'Sign in with Google'}
     >
       <svg className="w-5 h-5" viewBox="0 0 24 24">
         <path
@@ -85,4 +115,3 @@ export default function GoogleLoginButton({ onError }: GoogleLoginButtonProps) {
     </button>
   )
 }
-

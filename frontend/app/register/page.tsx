@@ -16,8 +16,6 @@ export default function RegisterPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ''
-
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
@@ -106,22 +104,20 @@ export default function RegisterPage() {
           </button>
         </form>
 
-        {googleClientId && (
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-text-secondary">Or continue with</span>
-              </div>
+        <div className="mt-6">
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300"></div>
             </div>
-
-            <div className="mt-4">
-              <GoogleLoginButton onError={(err) => setError(err)} />
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-text-secondary">Or continue with</span>
             </div>
           </div>
-        )}
+
+          <div className="mt-4">
+            <GoogleLoginButton onError={(err) => setError(err)} />
+          </div>
+        </div>
 
         <p className="mt-6 text-center text-sm text-text-secondary">
           Already have an account?{' '}
