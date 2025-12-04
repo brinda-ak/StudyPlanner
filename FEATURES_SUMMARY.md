@@ -1,6 +1,6 @@
 # Study Planner - Complete Features Summary
 
-## ✅ Implemented Features
+##  Implemented Features
 
 ### Core Features
 
@@ -85,7 +85,7 @@
     - Task completion rate
     - Personalized recommendations based on survey and data
 
-## 🎨 Design
+## Design
 
 - Consistent color palette:
   - Background: `#FFFFFF`
@@ -114,21 +114,21 @@
 - Quizzes (with questions)
 - StudySchedules (AI recommendations)
 
-## 🔐 Security
+## Security
 
 - JWT authentication
 - Password hashing with bcrypt
 - Protected API endpoints
 - CORS configuration
 
-## 📝 Test Cases
+## Test Cases
 
 - Comprehensive test suite with prefilled test user
 - Test fixtures for all models
 - Tests for all CRUD operations
 - Authentication tests
 
-## 🚀 Ready to Use
+## Ready to Use
 
 All features are implemented and ready to use. The app provides a complete study planning solution with AI-powered insights and personalized recommendations.
 

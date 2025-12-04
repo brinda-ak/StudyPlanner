@@ -1,218 +1,157 @@
 # Study Planner
 
-A comprehensive study planning and productivity web application with AI-powered insights, task management, Pomodoro timer, and note-taking capabilities.
+A comprehensive, AI-powered study planning and productivity web application designed to help students and learners maximize their study efficiency and achieve their academic goals.
 
-## Features
+## What is Study Planner?
+
+Study Planner is your all-in-one companion for academic success. Whether you're managing multiple classes, preparing for exams, or trying to build better study habits, Study Planner combines task management, focus tracking, and AI-powered insights to create a personalized study experience tailored to your needs.
+
+With Study Planner, you can:
+- **Organize your academic life** - Manage tasks, deadlines, and priorities in one place
+- **Stay focused** - Use the Pomodoro timer to maintain concentration and track your productivity
+- **Take smart notes** - Keep all your study materials organized and easily accessible
+- **Get AI-powered insights** - Receive personalized study recommendations based on your habits and preferences
+- **Optimize your schedule** - Let AI analyze your classes and preferences to suggest the best study times
+- **Track your progress** - Visualize your productivity with detailed analytics and charts
+
+## Key Features
 
 ### Core Features
-- **Dashboard**: Overview with stats, AI insights, analytics, and charts
-- **Tasks**: Full CRUD with priority levels, categories, due dates, and drag-and-drop reordering
-- **Pomodoro Timer**: Focus sessions with tracking and analytics
-- **Notes**: Rich note-taking with search and organization
-- **AI Insights**: Gemini AI-powered personalized study recommendations
-- **Authentication**: Email/password and Google OAuth sign-in
+
+**Dashboard**
+- Real-time overview of your study progress
+- Statistics: active/completed tasks, Pomodoro sessions, focus minutes, study streaks
+- Recent tasks and notes preview
+- AI-generated study insights and motivational tips
+- Personalized analytics with actionable recommendations
+
+**Tasks Management**
+- Create and organize tasks with priorities (High/Medium/Low)
+- Set due dates and categorize by subject
+- Drag-and-drop reordering for easy organization
+- Mark tasks as complete and track your progress
+
+**Pomodoro Timer**
+- Customizable focus sessions (1-60 minutes)
+- Automatic break timer with configurable duration
+- Long breaks every 4 sessions for optimal productivity
+- Background timer that continues even when you switch tabs
+- Beautiful circular progress ring visualization
+- Complete session history and statistics
+
+**Notes**
+- Rich text note-taking
+- Organize and search your study materials
+- Split-view interface for easy navigation
+- Sort by most recently updated
+
+**AI Study Insights**
+- Personalized recommendations powered by Google Gemini AI
+- Focus area suggestions based on your study patterns
+- Daily tips and motivational summaries
+- Smart analysis of your productivity data
 
 ### Advanced Features
-- **Settings & Survey**: Store study preferences, preferred times/days, focus habits
-- **Classes Management**: Import classes with syllabus for AI analysis
-- **Quiz Maker**: Auto-generate quizzes from syllabus using AI
-- **Schedule Optimization**: AI-recommended optimal study times per subject
-- **Analytics**: User-specific insights based on study data and survey responses
 
-## Tech Stack
+**Settings & Quick Survey**
+- Store your study preferences (preferred times, days, focus habits)
+- Quick survey to personalize your experience
+- User-specific analytics based on your responses
 
-### Backend
-- FastAPI
-- SQLAlchemy (PostgreSQL or SQLite)
-- Pydantic for validation
-- JWT authentication
-- Google Generative AI (Gemini)
+**Classes Management**
+- Add and organize all your classes
+- Import syllabus content for AI analysis
+- Track class schedules and assignments
+- Link classes to quizzes and study schedules
 
-### Frontend
-- Next.js 14
-- React 18
-- TypeScript
-- Zustand for state management
-- Recharts for data visualization
-- Tailwind CSS for styling
-- react-beautiful-dnd for drag-and-drop
+**Quiz Maker**
+- Automatically generate quizzes from your syllabus using AI
+- Customize questions or use AI-generated ones
+- Take quizzes to test your knowledge
+- Track quiz performance
 
-## Setup Instructions
+**Schedule Optimization**
+- AI analyzes your classes and study preferences
+- Get personalized recommendations for optimal study times
+- View your study schedule organized by date
+- Create tasks directly from schedule recommendations
 
-### Backend Setup
+**Analytics**
+- User-specific insights based on your study data
+- Track your productivity trends
+- Visual charts showing your progress over time
+- Personalized recommendations for improvement
 
-1. Navigate to the backend directory:
+## Getting Started
+
+### Prerequisites
+
+- Python 3.11+
+- Node.js 18+
+- npm or yarn
+
+### Quick Setup
+
+**Backend Setup:**
 ```bash
 cd backend
-```
-
-2. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies:
-```bash
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
 
-4. Create a `.env` file in the backend directory (copy from `.env.example`):
-```bash
-DATABASE_URL=sqlite:///./studyplanner.db
-SECRET_KEY=your-secret-key-here-change-in-production
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-GEMINI_API_KEY=your-gemini-api-key
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-```
+# Create .env file with:
+# DATABASE_URL=sqlite:///./studyplanner.db
+# SECRET_KEY=your-secret-key
+# GEMINI_API_KEY=your-gemini-api-key (optional)
+# GOOGLE_CLIENT_ID=your-client-id (optional)
+# GOOGLE_CLIENT_SECRET=your-client-secret (optional)
 
-5. Run the backend server:
-```bash
 uvicorn app.main:app --reload
 ```
 
-The API will be available at `http://localhost:8000`
-
-### Frontend Setup
-
-1. Navigate to the frontend directory:
+**Frontend Setup:**
 ```bash
 cd frontend
-```
-
-2. Install dependencies:
-```bash
 npm install
-```
 
-3. Create a `.env.local` file (copy from `.env.local.example`):
-```bash
-NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_GOOGLE_CLIENT_ID=your-google-client-id
-```
+# Create .env.local with:
+# NEXT_PUBLIC_API_URL=http://localhost:8000
+# NEXT_PUBLIC_GOOGLE_CLIENT_ID=your-client-id (optional)
 
-4. Run the development server:
-```bash
 npm run dev
 ```
 
-The frontend will be available at `http://localhost:3000`
+Visit `http://localhost:3000` to start using Study Planner!
 
-## API Endpoints
+## Technology Stack
 
-### Authentication
-- `POST /users/register` - Register a new user
-- `POST /users/login` - Login with email/password
-- `POST /users/google-signin` - Sign in with Google OAuth
-- `GET /users/me` - Get current user info
+- **Backend**: FastAPI, SQLAlchemy, PostgreSQL/SQLite, JWT Authentication
+- **Frontend**: Next.js 14, React 18, TypeScript, Zustand
+- **AI**: Google Gemini AI for personalized insights
+- **Styling**: Tailwind CSS with custom color palette
+- **Charts**: Recharts for data visualization
 
-### Tasks
-- `GET /tasks/` - Get all tasks
-- `POST /tasks/` - Create a task
-- `GET /tasks/{id}` - Get a specific task
-- `PUT /tasks/{id}` - Update a task
-- `DELETE /tasks/{id}` - Delete a task
-- `POST /tasks/reorder` - Reorder tasks
+## Design
 
-### Pomodoro
-- `GET /pomodoro/` - Get all Pomodoro sessions
-- `POST /pomodoro/` - Create a Pomodoro session
-- `GET /pomodoro/{id}` - Get a specific session
-- `PUT /pomodoro/{id}` - Update a session
-- `DELETE /pomodoro/{id}` - Delete a session
+Study Planner features a clean, modern interface with a carefully chosen color palette:
+- Background: `#FFFFFF` (White)
+- Accent: `#FFF9C4` (Soft Yellow)
+- Text: `#333333` (Dark Gray)
+- Secondary Text: `#666666` (Medium Gray)
 
-### Notes
-- `GET /notes/` - Get all notes
-- `POST /notes/` - Create a note
-- `GET /notes/{id}` - Get a specific note
-- `PUT /notes/{id}` - Update a note
-- `DELETE /notes/{id}` - Delete a note
+## Authentication
 
-### AI Insights
-- `GET /ai/insights` - Get AI-generated study insights
+Study Planner supports multiple authentication methods:
+- Email and password registration/login
+- Google OAuth sign-in (optional)
+- Secure JWT token-based authentication
 
-### Settings
-- `GET /settings/` - Get user settings
-- `POST /settings/` - Create settings
-- `PUT /settings/` - Update settings
+## Need Help?
 
-### Classes
-- `GET /classes/` - Get all classes
-- `POST /classes/` - Create class
-- `GET /classes/{id}` - Get specific class
-- `PUT /classes/{id}` - Update class
-- `DELETE /classes/{id}` - Delete class
-
-### Quizzes
-- `GET /quizzes/` - Get all quizzes
-- `POST /quizzes/` - Create quiz
-- `POST /quizzes/generate` - Generate quiz from syllabus
-- `GET /quizzes/{id}` - Get specific quiz
-- `PUT /quizzes/{id}` - Update quiz
-- `DELETE /quizzes/{id}` - Delete quiz
-
-### Schedule
-- `GET /schedule/recommendations` - Get AI-generated schedule recommendations
-- `GET /schedule/` - Get all schedules
-- `POST /schedule/` - Create schedule
-- `DELETE /schedule/{id}` - Delete schedule
-
-### Analytics
-- `GET /analytics/` - Get user-specific analytics
-
-## Color Palette
-
-- Background: `#FFFFFF`
-- Accent: `#FFF9C4`
-- Text: `#333333`
-- Secondary Text: `#666666`
-
-## Database
-
-The application uses SQLite by default (for development). For production, update the `DATABASE_URL` in `.env` to use PostgreSQL:
-
-```
-DATABASE_URL=postgresql://user:password@localhost/studyplanner
-```
-
-## Google OAuth Setup
-
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select an existing one
-3. Enable Google+ API
-4. Create OAuth 2.0 credentials
-5. Add authorized redirect URIs
-6. Copy the Client ID and Client Secret to your `.env` files
-
-## Gemini AI Setup
-
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Create an API key
-3. Add it to your backend `.env` file as `GEMINI_API_KEY`
-
-## Development
-
-### Backend
-- API documentation available at `http://localhost:8000/docs`
-- Database migrations are handled automatically on startup
-
-### Frontend
-- Hot reload enabled in development mode
-- TypeScript for type safety
-- Tailwind CSS for styling
-
-## Production Deployment
-
-1. Set up a PostgreSQL database
-2. Update environment variables for production
-3. Build the frontend: `npm run build`
-4. Use a production ASGI server like Gunicorn for the backend
-5. Configure CORS for your production domain
-6. Set up SSL certificates
+- Check the API documentation at `http://localhost:8000/docs` when the backend is running
+- Review the Features Summary in `FEATURES_SUMMARY.md`
+- See Advanced Features documentation in `ADVANCED_FEATURES.md`
 
 ## License
 
 MIT
-
