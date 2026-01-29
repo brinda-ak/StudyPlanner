@@ -96,14 +96,14 @@
 - Mobile responsive
 - Modern, clean UI
 
-## 🤖 AI Features
+## AI Features
 
 - **AI Insights**: Personalized study recommendations using Gemini AI
 - **Quiz Generation**: Auto-generate quizzes from syllabus content
 - **Schedule Optimization**: AI analyzes your data to recommend optimal study times
 - **Analytics**: Personalized recommendations based on study patterns
 
-## 📊 Database Models
+## Database Models
 
 - Users (with Google OAuth support)
 - Tasks (with ordering support)
